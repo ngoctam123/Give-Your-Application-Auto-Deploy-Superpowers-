@@ -402,11 +402,6 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - run:
-          name: Install dependencies
-          command: |
-             yum -y install jq tar gzip git curl
-      - install_awscli
-      - run:
           name: Install AWS CLI 
           command: |
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
