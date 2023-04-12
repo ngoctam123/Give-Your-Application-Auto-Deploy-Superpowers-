@@ -417,7 +417,9 @@ jobs:
       - run:
           name: Backend smoke test.
           command: |
-            
+            API_URL=`cat .circleci/outputs/backend_url.txt`
+            echo $API_URL
+            curl -s $API_URL/api/status
 
       - run:
           name: Frontend smoke test.
@@ -427,7 +429,7 @@ jobs:
             if curl -s ${URL} | grep "Welcome"
             then
                 # Change this to 0 after the job fails
-              exit 0
+              exit 1
             else
               exit 1
             fi
