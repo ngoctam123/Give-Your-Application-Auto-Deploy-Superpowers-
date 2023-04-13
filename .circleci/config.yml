@@ -402,11 +402,11 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - install_nodejs
-      - install_awscli
-      # - run:
-      #     name: Install AWS CLI 
-      #     command: |
+      - run:
+          name: Install AWS CLI 
+          command: |
+            apk add --update curl
+            pip install awscli
       #       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       #       unzip awscliv2.zip
       #       sudo ./aws/install
