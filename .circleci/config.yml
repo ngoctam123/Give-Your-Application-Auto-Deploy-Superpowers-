@@ -401,13 +401,16 @@ jobs:
     docker:
       - image: cimg/node:13.8.0
     steps:
-      - run:
-          name: Install AWS CLI 
-          command: |
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
-            # sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+      - checkout
+      - install_nodejs
+      - install_awscli
+      # - run:
+      #     name: Install AWS CLI 
+      #     command: |
+      #       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      #       unzip awscliv2.zip
+      #       sudo ./aws/install
+      #       # sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 
       - run:
           name: Backend smoke test.
